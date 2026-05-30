@@ -18,7 +18,7 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -26,8 +26,18 @@
   </head>
 
   <body class="h-full">
+      <%# <div class="flex h-full"> %>
+    <%# if user_signed_in? %>
+      <%# if current_user.admin? %>
+      <!-- Sidebar -->
+      <%= render 'shared/admin_nav' %>
+      <%# else %>
+       <%#= render "shared/general_nav" %>
+      <%# end %>
+     <%# end %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
+    <%# <div> %>
   </body>
 </html>
