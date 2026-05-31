@@ -8,7 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 User.destroy_all
-puts "🗑️  Users cleared"
+Case.destroy_all
+puts "🗑️  Users & Cases cleared"
 
 User.create!(
   name: "Halo",
@@ -18,3 +19,10 @@ User.create!(
   admin: true
 )
 puts "✅ Admin user created"
+
+Case.create!(
+  name: "The Vanishing at Blackwood Manor",
+  intro: "A wealthy socialite has disappeared from her locked study. The guests are restless, the staff are hiding secrets, and nothing is as it seems.",
+  created_by: User.find_by(name: "Halo")
+)
+puts "✅ Case created"

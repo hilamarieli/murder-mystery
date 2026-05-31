@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_30_115327) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_31_080418) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "cases", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "created_by_id", null: false
+    t.string "intro"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["created_by_id"], name: "index_cases_on_created_by_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.boolean "admin", default: false, null: false
@@ -27,4 +36,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_30_115327) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "cases", "users", column: "created_by_id"
 end

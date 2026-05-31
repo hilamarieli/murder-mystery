@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_writer :login
+  has_many :created_cases, foreign_key: :created_by_id, class_name: "Case"
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
