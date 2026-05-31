@@ -30,7 +30,9 @@
     <%# if user_signed_in? %>
       <%# if current_user.admin? %>
       <!-- Sidebar -->
+      <% if user_signed_in? %>
       <%= render 'shared/admin_nav' %>
+      <%end%>
       <%# else %>
        <%#= render "shared/general_nav" %>
       <%# end %>
