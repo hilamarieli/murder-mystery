@@ -26,6 +26,18 @@
   </head>
 
   <body class="h-full">
+    <% if notice.present? %>
+      <div class="fixed top-20 right-5 z-50 rounded-md bg-green-50 px-4 py-3 text-sm font-medium text-green-800 shadow-sm ring-1 ring-green-600/20">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div class="fixed top-20 right-5 z-50 rounded-md bg-red-50 px-4 py-3 text-sm font-medium text-red-800 shadow-sm ring-1 ring-red-600/20">
+        <%= alert %>
+      </div>
+    <% end %>
+
       <%# <div class="flex h-full"> %>
     <%# if user_signed_in? %>
       <%# if current_user.admin? %>

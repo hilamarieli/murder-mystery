@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  intro: MyString
+  name: Blackwood Manor
+  intro: A disappearance in a locked study.
+  created_by: one
+  status: idea
 
 two:
-  name: MyString
-  intro: MyString
+  name: Cabin Three
+  intro: A visitor has vanished from a secluded lodge.
+  created_by: two
+  status: in_progress

@@ -1,4 +1,73 @@
-<div>
-  <h1 class="font-bold text-4xl">Users#index</h1>
-  <p>Find me in app/views/users/index.html.erb</p>
+<div class="w-full">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-2xl font-semibold text-gray-900">Users</h1>
+      <p class="mt-2 text-sm text-gray-600">
+        View everyone who has access to Murder Mystery and their account role.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-8 overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-gray-900/5">
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th scope="col" class="py-3.5 pr-3 pl-6 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+              User
+            </th>
+            <th scope="col" class="px-3 py-3.5 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+              Role
+            </th>
+            <th scope="col" class="px-3 py-3.5 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+              Joined
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-100 bg-white">
+          <% @users.each do |user| %>
+            <tr class="hover:bg-gray-50">
+              <td class="py-4 pr-3 pl-6">
+                <div class="flex items-center gap-3">
+                  <div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-700">
+                    <%= user.name.first.upcase %>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-medium text-gray-900"><%= user.name %></span>
+                      <% if user == current_user %>
+                        <span class="rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">You</span>
+                      <% end %>
+                    </div>
+                    <div class="mt-1 text-sm text-gray-500"><%= user.email %></div>
+                  </div>
+                </div>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm">
+                <% if user.admin? %>
+                  <span class="inline-flex rounded-full bg-purple-50 px-2.5 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
+                    Admin
+                  </span>
+                <% else %>
+                  <span class="inline-flex rounded-full bg-gray-50 px-2.5 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                    User
+                  </span>
+                <% end %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <%= user.created_at.strftime("%B %d, %Y") %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @users.empty? %>
+      <div class="px-6 py-12 text-center text-sm text-gray-500">
+        No users have been created yet.
+      </div>
+    <% end %>
+  </div>
 </div>

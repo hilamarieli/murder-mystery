@@ -1,0 +1,13 @@
+victim:
+  case: one
+  name: Evelyn Blackwood
+  description: The owner of Blackwood Manor.
+  occupation: Socialite
+  narrative_role: victim
+
+suspect:
+  case: one
+  name: Iris Vale
+  description: A guest with a reason to resent Evelyn.
+  occupation: Journalist
+  narrative_role: suspect
